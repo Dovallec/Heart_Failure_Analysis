@@ -2,23 +2,50 @@
 
 ## Nombre del Proyecto
 
-[Nombre del proyecto aquí]
+Predicción de Eventos de Enfermedad Cardíaca
 
 ## Objetivo del Proyecto
 
-[Descripción breve del objetivo del proyecto y por qué es importante]
+Desarrollar un modelo de machine learning supervisado aplicando técnicas de metodologías ágiles  para predecir la presencia de enfermedad cardíaca (HeartDisease = 1) a partir de variables clínicas, demográficas y resultados electrocardiográficos.
+
+El propósito es desarrollar un modelo robusto que permita identificar patrones de riesgo elevados, utilizando técnicas de aprendizaje de máquina sobre el conjunto de datos seleccionado aplicando técnicas de metodologías agiles que permitan un desarrollo eficiente del proyecto a lo largo de su ciclo de vida.
 
 ## Alcance del Proyecto
 
 ### Incluye:
 
 - [Descripción de los datos disponibles]
+  
+El dataset contiene 12 variables relevantes en el diagnóstico de enfermedad cardíaca las cuales se enuncian a continuación:
+
+    - Age: edad del paciente.
+    - Sex: sexo (M/F).
+    - Chest Pain Type: TA, ATA, NAP, ASY.
+    - Resting BP: presión arterial en reposo (mmHg).
+    - Cholesterol: colesterol sérico (mg/dl).
+    - Fasting BS: azúcar en ayunas > 120 mg/dl (1: sí, 0: no).
+    - Resting ECG: estado del electrocardiograma (Normal/ST/LVH).
+    - Max HR: frecuencia cardíaca máxima alcanzada.
+    - Exercise Angina: angina inducida por ejercicio (Y/N).
+    - Oldpeak: depresión del ST medida durante ejercicio.
+    - ST_Slope: pendiente del segmento ST (Up/Flat/Down).
+    - HeartDisease: variable respuesta (1 = enfermedad cardíaca, 0 = normal).
+
 - [Descripción de los resultados esperados]
+  
+En el desarrollo del proyecto se espera lograr un entendimiento profundo del conjunto de datos, garantizando la correcta aplicación de técnicas de limpieza, transformación y preprocesamiento que permitan preparar las variables para el modelado supervisado. Este proceso incluye la identificación de patrones, distribución de las variables, análisis de correlaciones y tratamiento de valores atípicos o inconsistencias, con el fin de establecer una base analítica sólida para el entrenamiento de los modelos.
+
+Asimismo, se anticipa la construcción y evaluación de diferentes modelos de clasificación supervisada, comparando su desempeño mediante métricas estándar como precisión, recall, F1-score, matriz de confusión y medidas basadas en curvas de discriminación. Finalmente, se espera realizar un análisis integral de los resultados para justificar la selección del modelo óptimo, considerando tanto su rendimiento cuantitativo como su comportamiento interpretativo y capacidad de generalización.
+
 - [Criterios de éxito del proyecto]
+  
+El proyecto se considerará exitoso si el modelo supervisado demuestra un desempeño sólido y estable, evidenciando capacidad para diferenciar de forma consistente entre pacientes con y sin enfermedad cardíaca y manteniendo un adecuado equilibrio entre precisión y generalización. Además, el pipeline de preprocesamiento, entrenamiento y validación debe ser completamente reproducible, estar documentado con rigurosidad técnica y permitir interpretar claramente los factores que influyen en las predicciones mediante técnicas explicativas apropiadas. El trabajo deberá desarrollarse aplicando principios de metodologías ágiles de gestión de proyectos, garantizando iteración continua, retroalimentación frecuente y una entrega incremental que asegure el avance ordenado y eficiente del desarrollo analítico.
 
 ### Excluye:
 
 - [Descripción de lo que no está incluido en el proyecto]
+
+El proyecto no incluye actividades relacionadas con el despliegue del modelo en entornos clínicos o productivos, la integración con sistemas hospitalarios, ni la recolección adicional de datos fuera del dataset proporcionado. Tampoco contempla la generación de recomendaciones médicas, diagnósticos clínicos o decisiones terapéuticas. De igual forma, quedan fuera del alcance la construcción de interfaces visuales, aplicaciones web, dashboards o herramientas de visualización avanzada, y cualquier procesamiento de datos no estructurados o provenientes de nuevas fuentes externas.
 
 ## Metodología
 
