@@ -49,37 +49,52 @@ El proyecto no incluye actividades relacionadas con el despliegue del modelo en 
 
 ## Metodología
 
-[Descripción breve de la metodología que se utilizará para llevar a cabo el proyecto]
+La metodología del proyecto seguirá un enfoque basado en CRISP-DM. En la primera etapa, se realizará un Análisis Exploratorio de Datos (EDA) sobre el conjunto de datos, para entender sus características, distribuciones, y la presencia de datos atípicos o faltantes. Se aplicarán técnicas de limpieza, imputación, y en caso de ser necesario, codificación de variables categóricas (ej. One-Hot Encoding), o escalado de características numéricas, con el objetivo de preparar los datos para el entrenamiento. En la fase de modelado, se explorarán modelos de clasificación supervisada y se evaluará si es pertinente el diseño de arquitecturas de redes neuronales profundas, experimentando con el número de capas, la cantidad de neuronas por capa, las funciones de activación y las técnicas de regularización. Posteriormente, el conjunto de datos se dividirá en subconjuntos de entrenamiento, validación y prueba para garantizar una evaluación objetiva. Se entrenarán los modelos candidatos y se optimizarán sus hiperparámetros utilizando el conjunto de validación. Se realizará la evaluación y comparación de modelos utilizando métricas de clasificación estándar sobre un conjunto de prueba independiente, para validar su precisión y capacidad de generalización antes de presentar las conclusiones y los posibles pasos futuros. Finalmente, se espera que el modelo quede listo para ser desplegado por medio de un servicio web.
 
 ## Cronograma
 
 | Etapa | Duración Estimada | Fechas |
 |------|---------|-------|
-| Entendimiento del negocio y carga de datos | 2 semanas | del 1 de mayo al 15 de mayo |
-| Preprocesamiento, análisis exploratorio | 4 semanas | del 16 de mayo al 15 de junio |
-| Modelamiento y extracción de características | 4 semanas | del 16 de junio al 15 de julio |
-| Despliegue | 2 semanas | del 16 de julio al 31 de julio |
-| Evaluación y entrega final | 3 semanas | del 1 de agosto al 21 de agosto |
-
-Hay que tener en cuenta que estas fechas son de ejemplo, estas deben ajustarse de acuerdo al proyecto.
+| Entendimiento del negocio y carga de datos | 1 semana | del 13 de noviembre al 20 de noviembre |
+| Preprocesamiento, análisis exploratorio | 1 semana | del 21 de noviembre al 27 de noviembre |
+| Modelamiento | 1 semana | del 28 de noviembre al 4 de diciembre |
+| Despliegue | 1 semana | del 5 de diciembre al 11 de diciembre |
+| Evaluación y entrega final | 3 días | del 12 de diciembre al 13 de diciembre |
 
 ## Equipo del Proyecto
 
-- [Nombre y cargo del líder del proyecto]
-- [Nombre y cargo de los miembros del equipo]
+- Líder: David Santiago Ovalle Caviedes
+- Ingeniero de datos: Juan Manuel Escobar Quinatana
+- Científico de datos: David Santiago Ovalle Caviedes
+- Ingeniera en ML: Ivonne Cristina Ruiz Páez
 
 ## Presupuesto
 
-[Descripción del presupuesto asignado al proyecto]
+| Categoría de Gasto | Descripción | Costo Estimado (USD) | Notas / Consideraciones |
+| :----------------- | :---------- | :------------------- | :---------------------- |
+| **I. Personal** | | | |
+| Científico de Datos Senior | Diseño del modelo, preprocesamiento avanzado, optimización. | $8,000 | 2 meses a tiempo parcial |
+| Ingeniero de ML Junior | Implementación de código, experimentos, EDA. | $5,000 | 2.5 meses a tiempo completo |
+| **II. Infraestructura y Software** | | | |
+| Plataforma Cloud (GPU) | AWS/GCP/Azure para entrenamiento de modelos (instancias GPU). | $1,500 | Costos de cómputo por ~200 horas de GPU |
+| Almacenamiento Cloud | S3/GCS para dataset de imágenes y checkpoints del modelo. | $50 | 500 GB por 2 meses |
+| Licencias de Software | Herramientas específicas o IDEs (si aplica, asumimos open-source). | $0 | Se utilizarán herramientas y librerías open-source (Python, TensorFlow/PyTorch, scikit-learn). |
+| **IV. Misceláneos** | | | |
+| Investigación y Desarrollo | Tiempo para pruebas de concepto, lectura de artículos, etc. | $700 | Horas dedicadas a exploración y resolución de problemas. |
+| Gestión de Proyecto | Coordinación, reuniones, documentación. | $300 | Pequeño porcentaje del tiempo del equipo. |
+| Contingencias | Fondo para imprevistos (aprox. 10% del total). | $1,555 | Buffer para gastos inesperados. |
+| **TOTAL ESTIMADO DEL PROYECTO** | | **$17,105** | |
 
 ## Stakeholders
 
-- [Nombre y cargo de los stakeholders del proyecto]
-- [Descripción de la relación con los stakeholders]
-- [Expectativas de los stakeholders]
+- Los stakeholders clave en este proyecto son los médicos cardiólogos, y los analistas de datos en el sector salud, interesados en herramientas de apoyo para la identificación temprana de pacientes con riesgo elevado de enfermedad cardíaca.
+
+- Los expertos en cardiología tienen un papel importante para actuar como validadores del conocimiento de dominio, asesorando sobre la pertinencia de las variables clínicas y la correcta interpretación de los resultados del modelo para asegurar su relevancia y utilidad clínica.
+
+- Las expectativas giran en torno a la entrega de un modelo de machine learning que demuestre una alta capacidad predictiva y de discriminación (medida con métricas como la curva ROC y el F1-score) y que sea interpretable para identificar los factores de riesgo más influyentes en la predicción de la enfermedad cardíaca.
 
 ## Aprobaciones
 
-- [Nombre y cargo del aprobador del proyecto]
+- Juan Sebastian Malagón Torres (Líder del equipo de Ciencia de datos)
 - [Firma del aprobador]
-- [Fecha de aprobación]
+- [13 de Diciembre 2025]
