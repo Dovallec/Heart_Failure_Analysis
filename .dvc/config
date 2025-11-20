@@ -1,0 +1,8 @@
+[core]
+    remote = myremote
+['remote "storage"']
+    url = gdrive://
+['remote "myremote"']
+    url = gdrive://1OsufhWZiAG2SlRw2AY_Af65IdoLYWCL6
+    gdrive_use_service_account = true
+    gdrive_service_account_json_file_path = D:\CURSOS\Universidad Nacional\modulo 6\credentials.json
