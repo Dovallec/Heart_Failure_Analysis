@@ -71,19 +71,19 @@ La metodología del proyecto seguirá un enfoque basado en CRISP-DM. En la prime
 ## Presupuesto
 
 | Categoría de Gasto | Descripción | Costo Estimado (USD) | Notas / Consideraciones |
-| :----------------- | :---------- | :------------------- | :---------------------- |
+| :--- | :--- | :--- | :--- |
 | **I. Personal** | | | |
-| Científico de Datos Senior | Diseño del modelo, preprocesamiento avanzado, optimización. | $8,000 | 2 meses a tiempo parcial |
-| Ingeniero de ML Junior | Implementación de código, experimentos, EDA. | $5,000 | 2.5 meses a tiempo completo |
+| Científico de Datos Senior | Diseño del modelo, preprocesamiento avanzado, optimización y validación. | $4,000 | 5 semanas a tiempo parcial (aprox. 50% de dedicación) |
+| Ingeniero de ML Junior | Implementación de código, Análisis Exploratorio de Datos (EDA), entrenamiento y evaluación de modelos. | $3,500 | 5 semanas a tiempo completo |
 | **II. Infraestructura y Software** | | | |
-| Plataforma Cloud (GPU) | AWS/GCP/Azure para entrenamiento de modelos (instancias GPU). | $1,500 | Costos de cómputo por ~200 horas de GPU |
-| Almacenamiento Cloud | S3/GCS para dataset de imágenes y checkpoints del modelo. | $50 | 500 GB por 2 meses |
-| Licencias de Software | Herramientas específicas o IDEs (si aplica, asumimos open-source). | $0 | Se utilizarán herramientas y librerías open-source (Python, TensorFlow/PyTorch, scikit-learn). |
+| Plataforma Cloud (Cómputo) | AWS/GCP/Azure para entrenamiento y validación de modelos (instancias de CPU o GPU ligeras). | $200 | Costos de cómputo por ~50 horas de CPU/GPU. |
+| Almacenamiento Cloud | S3/GCS para el dataset y artefactos del modelo. | $10 | Dataset tabular pequeño, costos mínimos de almacenamiento por 5 semanas. |
+| Licencias de Software | Herramientas específicas o IDEs. | $0 | Se utilizarán herramientas y librerías open-source (Python, scikit-learn, etc.). |
 | **IV. Misceláneos** | | | |
-| Investigación y Desarrollo | Tiempo para pruebas de concepto, lectura de artículos, etc. | $700 | Horas dedicadas a exploración y resolución de problemas. |
-| Gestión de Proyecto | Coordinación, reuniones, documentación. | $300 | Pequeño porcentaje del tiempo del equipo. |
-| Contingencias | Fondo para imprevistos (aprox. 10% del total). | $1,555 | Buffer para gastos inesperados. |
-| **TOTAL ESTIMADO DEL PROYECTO** | | **$17,105** | |
+| Investigación y Desarrollo | Tiempo para pruebas de concepto, exploración de algoritmos y técnicas de interpretabilidad. | $300 | Horas dedicadas a exploración de soluciones y resolución de problemas. |
+| Gestión de Proyecto | Coordinación, reuniones de avance, documentación ágil. | $150 | Porcentaje del tiempo del equipo. |
+| Contingencias | Fondo para imprevistos (aprox. 10% del total base). | $816 | Buffer para gastos inesperados o tiempo extra de cómputo/personal. |
+| **TOTAL ESTIMADO DEL PROYECTO** | | **$8,976** | |
 
 ## Stakeholders
 
