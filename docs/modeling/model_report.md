@@ -72,7 +72,7 @@ La evaluación muestra que la Regresión Logística optimizada es un modelo **ro
 
 ### Limitaciones y Recomendaciones
 * **Calidad de Datos:** **El proyecto no incluyó la limpieza de los 172 valores 0 en la variable `Cholesterol`**. Se recomienda imputación de estos valores anómalos (con la mediana o algún otro método) para validar si el rendimiento actual no está sesgado por este error de codificación.
-* **Aplicación:** El modelo está listo para ser integrado en un sistema de información para el *screening* de riesgo.
+* **Aplicación:** El modelo está listo para ser integrado en un sistema de información para el *screening* de riesgo (aplicación de pruebas o exámenes a una población aparentemente sana con el objetivo de detectar de forma temprana una enfermedad o condición específica antes de que aparezcan los síntomas.).
 
 ### Aplicaciones
 El modelo, desplegado a través de su endpoint MLflow (`http://localhost:8001/invocations`), puede ser consumido por:
