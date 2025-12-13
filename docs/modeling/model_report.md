@@ -1,75 +1,87 @@
-# Reporte del Modelo Baseline: Regresión Logística
+# Reporte del Modelo Final
 
-Este documento detalla la implementación y los resultados del primer modelo predictivo, una Regresión Logística, que sirve como la línea base de rendimiento para el proyecto.
+## Resumen Ejecutivo
+
+El proyecto **Predicción de Eventos de Enfermedad Cardíaca** ha concluido con el desarrollo y despliegue de un modelo de **Regresión Logística** optimizado. El modelo fue seleccionado por su capacidad de ofrecer un alto rendimiento predictivo combinado con una interpretabilidad clínica significativa, un requisito fundamental en el ámbito de la salud.
+
+El modelo alcanzó una **Precisión (Accuracy) del 89.13%** sobre el conjunto de prueba, con un balance adecuado entre la predicción de casos positivos (Recall 0.93) y negativos (Precision 0.91). El modelo fue registrado y desplegado exitosamente utilizando la plataforma **MLflow**, garantizando la trazabilidad y la disponibilidad como un servicio web de inferencia.
+
+| Métrica | Clase 0 (Sin Enfermedad) | Clase 1 (Con Enfermedad) | Macro Promedio |
+| :--- | :--- | :--- | :--- |
+| **Precision** | 0.91 | 0.88 | 0.89 |
+| **Recall** | 0.84 | 0.93 | 0.89 |
+| **F1-Score** | 0.87 | 0.90 | 0.89 |
+| **Accuracy Total** | \- | \- | 0.89 |
+
+## Descripción del problema
+
+El problema central es la clasificación binaria de pacientes para predecir la presencia o ausencia de enfermedad cardíaca (`HeartDisease = 1` o `0`).
+
+**Contexto y Objetivos:**
+* **Contexto:** El proyecto se desarrolla en el marco de la aplicación de metodologías ágiles a proyectos de Machine Learning, utilizando el conjunto de datos de predicción de falla cardíaca de Kaggle.
+* **Objetivo:** Desarrollar un modelo predictivo supervisado robusto que permita identificar patrones de riesgo elevados para la enfermedad cardíaca a partir de 12 variables clínicas y demográficas.
+* **Justificación:** El modelo ofrece una herramienta no invasiva y automatizada para la evaluación del riesgo, complementando la labor clínica.
 
 ## Descripción del modelo
 
-El modelo seleccionado como *baseline* práctico es una **Regresión Logística**. Este algoritmo lineal es simple, interpretable y rápido de entrenar, lo que lo convierte en un excelente punto de partida para problemas de clasificación binaria.
+El desarrollo siguió un enfoque híbrido, combinando las fases de **CRISP-DM** (Entendimiento, Preparación, Modelado, Evaluación) con la **iteración y feedback** constante de metodologías ágiles. 
 
-* **Baseline Teórico (Referencia):**
-    * La clase objetivo más frecuente es **1 (HeartDisease)**, con una proporción del **55.34%**. El modelo de Regresión Logística debe superar esta exactitud para ser considerado viable.
+### Modelo final seleccionado
+El modelo final seleccionado fue la **Regresión Logística**, optimizado mediante `GridSearchCV`.
 
-## Variables de entrada
+* **Modelo:** Regresión Logística.
+* **Hiperparámetros Óptimos:**
+    | Parámetro | Valor |
+    | :--- | :--- |
+    | `C` | 1.0 |
+    | `penalty` | 'l2' |
+    | `solver` | 'lbfgs' |
+    | `class_weight` | 'balanced' |
 
-El modelo fue entrenado utilizando **15 características** del conjunto de datos, luego de la ingeniería y codificación *one-hot* de las variables categóricas, sin aplicar selección de características en esta fase:
-
-* **Variables Numéricas:** `Age`, `RestingBP`, `Cholesterol`, `FastingBS`, `MaxHR`, `Oldpeak`.
-* **Variables Categóricas Codificadas:** `Sex_M`, `ChestPainType_ATA`, `ChestPainType_NAP`, `ChestPainType_TA`, `RestingECG_Normal`, `RestingECG_ST`, `ExerciseAngina_Y`, `ST_Slope_Flat`, `ST_Slope_Up`.
-
-## Variable objetivo
-
-El modelo intenta predecir si un paciente tiene enfermedad cardíaca o no:
-
-| Valor | Descripción |
-| :---: | :--- |
-| `0` | No hay enfermedad cardíaca |
-| `1` | Sí hay enfermedad cardíaca |
-
-***
+### Técnicas y Metodología
+1.  **Preparación de datos:** Codificación de variables categóricas (`Sex`, `ChestPainType`, `ST_Slope`, etc.) mediante **One-Hot Encoding** para transformarlas en formato numérico.
+2.  **Selección de características:** Se utilizaron métodos univariantes como **ANOVA F-test** e **Información Mutua** (MI) para validar la relevancia de los predictores, lo que confirmó que `ST_Slope`, `Oldpeak`, y `MaxHR` son las características más influyentes. 
+3.  **Modelado y optimización:** Se exploraron modelos *baseline* (Regresión Logística, Random Forest), y posteriormente se optimizaron los candidatos más prometedores (XGBoost y Regresión Logística) utilizando **GridSearchCV** para encontrar los mejores hiperparámetros.
+4.  **MLOps y Despliegue:** El modelo fue registrado a través de **MLflow**, estableciendo un *pipeline* de despliegue estable.
 
 ## Evaluación del modelo
 
-### Métricas de evaluación
+La evaluación se realizó sobre un conjunto de prueba (20% del total, 184 registros) retenido desde el inicio para garantizar la objetividad.
 
-Se utilizaron las siguientes métricas de clasificación binaria, reportadas en el conjunto de prueba (`Test Set`):
+### Matriz de Confusión (Regresión Logística)
 
-| Métrica | Descripción |
-| :--- | :--- |
-| **Accuracy (Exactitud)** | Proporción de predicciones correctas totales. |
-| **Precision (Precisión)** | De todos los casos predichos como positivos (1), cuántos fueron realmente positivos. Minimiza **Falsos Positivos**. |
-| **Recall (Sensibilidad)** | De todos los casos positivos (1) reales, cuántos fueron predichos correctamente. Minimiza **Falsos Negativos**. |
-| **F1-Score** | Media armónica de Precision y Recall. |
+| Real / Predicho | No Enfermedad (0) | Con Enfermedad (1) |
+| :--- | :--- | :--- |
+| **No Enfermedad (0)** | 69 (Verdaderos Negativos) | 13 (Falsos Positivos) |
+| **Con Enfermedad (1)** | 7 (Falsos Negativos) | 95 (Verdaderos Positivos) |
 
-### Resultados de evaluación
+### Interpretación de los resultados
 
-A continuación, se presentan los resultados obtenidos por la Regresión Logística, optimizada mediante `GridSearchCV` en el conjunto de validación:
+* **Alta Precisión (0.89):** El modelo tiene una alta capacidad para clasificar correctamente los casos.
+* **Alto Recall en Clase Positiva (0.93):** De todos los pacientes que *realmente* tienen la enfermedad (102), el modelo identificó correctamente al 93% (95 casos). Esto es crucial en salud para minimizar los **Falsos Negativos** (casos de enfermedad perdidos).
+* **F1-Score Balanceado (0.89):** El F1-score es alto para ambas clases, lo que indica que el modelo mantiene un buen balance entre Precision y Recall.
 
-| Clase | Precision | Recall | F1-Score | Soporte |
-| :---: | :---: | :---: | :---: | :---: |
-| **0** (No Enfermedad) | 0.88 | 0.79 | 0.83 | 82 |
-| **1** (Enfermedad) | 0.85 | 0.91 | 0.88 | 102 |
-| **Accuracy (Exactitud)** | | | **0.86** | 184 |
-| **Promedio Ponderado** | 0.86 | 0.86 | 0.86 | 184 |
+La evaluación muestra que la Regresión Logística optimizada es un modelo **robusto y confiable** para la predicción, con un desempeño comparable al de modelos más complejos (como XGBoost), pero ofreciendo mayor interpretabilidad.
 
-### Análisis de los resultados
+## Conclusiones y Recomendaciones
 
-El modelo de Regresión Logística alcanzó una **Exactitud del 86%**, superando ampliamente el *baseline* teórico (55.34%), lo que confirma el poder predictivo de las características seleccionadas.
+### Ventajas del modelo
+* **Interpretabilidad:** El uso de Regresión Logística permite una comprensión directa del impacto (coeficientes) de cada variable en la probabilidad de enfermedad.
+* **Desempeño:** El Accuracy, Precision y Recall macro (0.89) cumplen con los criterios de solidez.
+* **Reproducibilidad y despliegue:** El *pipeline* es completamente reproducible y el modelo fue exitosamente desplegado como un servicio REST API funcional utilizando MLflow.
 
-* **Fortaleza:** El modelo destaca por su **alto Recall en la Clase 1 (0.91)**. Esto es muy positivo en un contexto médico, ya que indica una gran capacidad para **identificar correctamente** a los pacientes enfermos, minimizando el riesgo de **Falsos Negativos**.
-* **Debilidad:** El **Recall en la Clase 0 (0.79)** es inferior. Esto sugiere que el modelo produce más **Falsos Positivos** (pacientes predichos como enfermos que en realidad no lo están). La optimización en modelos posteriores debería enfocarse en mejorar la **Precisión** de la Clase 1 para reducir estos Falsos Positivos.
+### Limitaciones y Recomendaciones
+* **Calidad de Datos:** **El proyecto no incluyó la limpieza de los 172 valores 0 en la variable `Cholesterol`**. Se recomienda imputación de estos valores anómalos (con la mediana o algún otro método) para validar si el rendimiento actual no está sesgado por este error de codificación.
+* **Aplicación:** El modelo está listo para ser integrado en un sistema de información para el *screening* de riesgo.
 
-## Conclusiones
-
-La Regresión Logística establece un **sólido punto de partida** con un rendimiento general del 86%. Su principal ventaja es la alta sensibilidad para detectar la enfermedad (Recall=0.91), priorizando la minimización de Falsos Negativos.
-
-**Posibles Áreas de Mejora:**
-
-1.  **Reducir Falsos Positivos:** Los modelos más complejos (como SVC y XGBoost) deben intentar mejorar la **Precisión** de la Clase 1 y el **F1-Score** de la Clase 0.
-2.  **Impacto de la Selección de Características:** Se recomienda re-entrenar la Regresión Logística utilizando el subconjunto óptimo de 8 características identificado en las secciones posteriores del *notebook*, para verificar si un modelo más simple puede obtener un rendimiento similar o mejor.
+### Aplicaciones
+El modelo, desplegado a través de su endpoint MLflow (`http://localhost:8001/invocations`), puede ser consumido por:
+1.  **Dashboards de riesgo:** Para visualizar en tiempo real el riesgo de un paciente en función de sus parámetros de entrada.
+2.  **Sistemas de admisión hospitalaria:** Como una alerta temprana automatizada para priorizar la atención o la realización de pruebas diagnósticas.
 
 ## Referencias
 
-1.  **Modelo:** `sklearn.linear_model.LogisticRegression`
-2.  **Optimización:** `sklearn.model_selection.GridSearchCV`
-3.  **Evaluación:** `sklearn.metrics.classification_report`, `sklearn.metrics.accuracy_score`
-4.  **Datos:** Conjunto de datos de Heart Disease (`heart.csv`) cargado desde GitHub.
+* Conjunto de datos: [Kaggle - Heart Failure Prediction](https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction).
+* Librerías de ML: `scikit-learn`, `xgboost`.
+* MLOps: `mlflow` (para tracking, model registry y serving).
+* Código fuente del proyecto: Repositorio GitHub de Heart\_Failure\_Analysis.
