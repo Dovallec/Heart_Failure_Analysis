@@ -18,8 +18,6 @@ El modelo fue entrenado utilizando **15 características** del conjunto de datos
 | **Numéricas** | `Age`, `RestingBP`, `Cholesterol`, `FastingBS`, `MaxHR`, `Oldpeak` | Escalado con `StandardScaler` (En iteración posterior a la carga de datos). | 6 variables |
 | **Categóricas** | `Sex`, `ChestPainType`, `RestingECG`, `ExerciseAngina`, `ST_Slope` | Codificación One-Hot Encoding (`pd.get_dummies` con `drop_first=True`). | 9 variables dummy |
 
-**Nota sobre Calidad de Datos:** Es crucial mencionar que este baseline se ejecutó antes de la limpieza de los valores anómalos de **0** en `Cholesterol` y `RestingBP`, lo cual es una debilidad que se identificó para futuras iteraciones.
-
 ## Variable Objetivo
 
 El modelo intenta predecir si un paciente tiene enfermedad cardíaca o no:
@@ -35,7 +33,7 @@ La variable se encuentra aproximadamente balanceada (55.34% vs 44.66%).
 
 ### Métricas de Evaluación
 
-Se utilizaron métricas de clasificación reportadas en el conjunto de prueba (Test Set) para establecer una visión completa del rendimiento, más allá de la exactitud simple:
+Se utilizaron métricas de clasificación reportadas en el conjunto de prueba para establecer una visión completa del rendimiento:
 
 | Métrica | Descripción |
 | :--- | :--- |
@@ -70,13 +68,10 @@ Los resultados presentados a continuación corresponden a la primera implementac
 La Regresión Logística establece un **sólido punto de partida** con un rendimiento general del 86%. Su principal ventaja es la alta sensibilidad para detectar la enfermedad, lo que lo convierte en un candidato fuerte para la fase de producción, sujeto a optimización.
 
 **Posibles Áreas de Mejora (Próximos Sprints):**
-1.  **Limpieza de Datos:** Tratar los valores 0 en variables numéricas para asegurar que el modelo aprenda de relaciones clínicas reales.
-2.  **Optimización de Hiperparámetros:** Aplicar `GridSearchCV` para mejorar el rendimiento, especialmente la Precisión.
-3.  **Selección de Características:** Utilizar métodos univariantes (F-Score, Información Mutua) para validar y simplificar el conjunto de predictores, buscando un equilibrio óptimo entre complejidad y rendimiento.
+1.  **Optimización de Hiperparámetros:** Aplicar `GridSearchCV` para mejorar el rendimiento, especialmente la Precisión.
+2.  **Selección de Características:** Utilizar métodos univariantes (F-Score, Información Mutua) para validar y simplificar el conjunto de predictores, buscando un equilibrio óptimo entre complejidad y rendimiento.
 
 ## Referencias
 
 * Modelo: `sklearn.linear_model.LogisticRegression`
 * Evaluación: `sklearn.metrics.classification_report`, `sklearn.metrics.accuracy_score`
-
-Espero que te sea útil esta plantilla. Recuerda que puedes adaptarla a las necesidades específicas de tu proyecto.
